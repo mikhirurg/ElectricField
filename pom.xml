@@ -33,7 +33,7 @@
                         <index>true</index>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>io.github.mikhirurg.signalprocessor.gui.Oscilloscope</mainClass>
+                            <mainClass>io.github.mikhirurg.physlab3.PhysLabGUI</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -44,7 +44,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>io.github.mikhirurg.signalprocessor.gui.Oscilloscope</mainClass>
+                            <mainClass>io.github.mikhirurg.physlab3.PhysLabGUI</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
