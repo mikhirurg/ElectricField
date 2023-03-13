@@ -49,14 +49,14 @@ On the left side of the application window, there is a big simulation area where
 In this simulation area user can drag particles with a mouse and the lines of force will be dynamically re-render.
 
 And, on the left side there are three panels that are used to control the simulation:
-- The particles panel
+- The particles panel:
   This panel is used to set the coordinates of the particles (cm), set the charges values of particles (nc) and set the number of the lines of force.
   Also user can reset the particles by pressing the "Reset" button.
 
-- The information panel
+- The information panel:
   Here user can see the value of the voltage and potential value at some point in the electric field. In order to get all this information for the particular point, the user can click the right mouse button in the desired location of the electric field. 
   
-- The graphs panel
+- The graphs panel:
   Using the controls of this panel users can access the graphs of dependence between voltage and the coordinate x, and the graph of the dependence between potential and the coordinate x.
 
 ## Examples
