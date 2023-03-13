@@ -22,6 +22,11 @@ The project objectives:
 - Calculation of the equations of force lines for a charged particle 
 - Calculation of trajectories of lines of force for two charged particles 
 
+### Algorithm for constructing electrostatic field lines:
+In order to calculate and simulate the lines of force I was using an Euler method to solve the system of differential equations.
+The main idea of the algorithm is quite simple: for every line of force we are choosing the starting point (in the current implementation the starting points are evenly distributed over the circle which is used as a particle graphical model).
+In the starting point we are calculating the the projections of electrostatic field intensity vector 
+
 ## How to use the project
 
 ![Screenshot](/images/screen.png)
