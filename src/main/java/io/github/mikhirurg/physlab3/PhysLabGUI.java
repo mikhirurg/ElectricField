@@ -52,11 +52,14 @@ public class PhysLabGUI {
 
 
         JPanel fieldControl = new JPanel(new GridBagLayout());
-        TitledBorder border = new TitledBorder("Управление зарядами:");
+
+        // border.charges_settings
+        TitledBorder border = new TitledBorder(Application.getString("border.charges_settings"));
 
         fieldControl.setBorder(border);
 
-        JLabel label = new JLabel("Заряды Q1 и Q2 (нКл): ");
+        // label.charges_q1_q2
+        JLabel label = new JLabel(Application.getString("label.charges_q1_q2"));
         constraints.gridx = 0;
         constraints.gridy = 0;
         constraints.gridwidth = 2;
@@ -87,7 +90,8 @@ public class PhysLabGUI {
         constraints.weighty = 0;
         fieldControl.add(Q2, constraints);
 
-        label = new JLabel("Координаты X1 и X2 (см)");
+        // label.coords_x1_x2
+        label = new JLabel(Application.getString("label.coords_x1_x2"));
         constraints.gridx = 0;
         constraints.gridy = 2;
         constraints.gridwidth = 2;
@@ -118,7 +122,8 @@ public class PhysLabGUI {
         constraints.weighty = 0;
         fieldControl.add(X2, constraints);
 
-        label = new JLabel("Координаты Y1 и Y2 (см)");
+        // label.coords_y1_y2
+        label = new JLabel(Application.getString("label.coords_y1_y2"));
         constraints.gridx = 0;
         constraints.gridy = 4;
         constraints.gridwidth = 2;
@@ -149,7 +154,8 @@ public class PhysLabGUI {
         constraints.weighty = 0;
         fieldControl.add(Y2, constraints);
 
-        label = new JLabel("Количество силовых линий:");
+        // label.number_force_lines
+        label = new JLabel(Application.getString("label.number_force_lines"));
         constraints.gridx = 0;
         constraints.gridy = 6;
         constraints.gridwidth = 2;
@@ -171,7 +177,8 @@ public class PhysLabGUI {
         constraints.ipady = 0;
         fieldControl.add(nLines, constraints);
 
-        Set = new JButton("Установить");
+        // button.set
+        Set = new JButton(Application.getString("button.set"));
         constraints.fill = GridBagConstraints.SOUTHWEST;
         constraints.anchor = GridBagConstraints.SOUTH;
         constraints.gridx = 1;
@@ -179,7 +186,8 @@ public class PhysLabGUI {
         constraints.gridheight = 1;
         fieldControl.add(Set, constraints);
 
-        Reset = new JButton("Сброс");
+        // button.reset
+        Reset = new JButton(Application.getString("button.reset"));
         constraints.fill = GridBagConstraints.SOUTHWEST;
         constraints.anchor = GridBagConstraints.SOUTH;
         constraints.gridx = 0;
@@ -214,7 +222,8 @@ public class PhysLabGUI {
                 Y1.setText(String.valueOf(panel.e1.y));
                 Y2.setText(String.valueOf(panel.e2.y));
                 nLines.setText(String.valueOf(panel.nlines));
-                JOptionPane.showMessageDialog(pane, "Ошибка! Неправильный формат данных!");
+                // message.error_wrong_format
+                JOptionPane.showMessageDialog(pane, Application.getString("message.error_wrong_format"));
             }
         });
 
@@ -238,7 +247,8 @@ public class PhysLabGUI {
             panel.repaint();
         });
 
-        JButton save = new JButton("Сохранить");
+        // button.save
+        JButton save = new JButton(Application.getString("button.save"));
 
         save.addActionListener(e -> {
             BufferedImage img = new BufferedImage(panel.getWidth(), panel.getHeight(), BufferedImage.TYPE_INT_RGB);
@@ -247,13 +257,15 @@ public class PhysLabGUI {
             g2d.dispose();
 
             JFileChooser fileChooser = new JFileChooser();
-            fileChooser.setDialogTitle("Сохранить график");
+            // dialog_title.save_graph_title
+            fileChooser.setDialogTitle(Application.getString("dialog_title.save_graph_title"));
             int userSelect = fileChooser.showSaveDialog(panel);
             if (userSelect == JFileChooser.APPROVE_OPTION) {
                 try {
                     ImageIO.write(img, "png", fileChooser.getSelectedFile());
                 } catch (IOException ioException) {
-                    System.err.println("Error while saving file!");
+                    // message.error_save
+                    System.err.println(Application.getString("message.error_save"));
                 }
             }
         });
@@ -276,10 +288,13 @@ public class PhysLabGUI {
         pane.add(fieldControl, constraints);
 
         JPanel electInfo = new JPanel(new GridBagLayout());
-        border = new TitledBorder("Информация:");
+
+        // border.information
+        border = new TitledBorder(Application.getString("border.information"));
         electInfo.setBorder(border);
 
-        label = new JLabel("Координаты X и Y:");
+        // label.coords_x_y
+        label = new JLabel(Application.getString("label.coords_x_y"));
         constraints.gridx = 0;
         constraints.gridy = 0;
         constraints.gridwidth = 2;
@@ -312,7 +327,8 @@ public class PhysLabGUI {
         constraints.ipady = 0;
         electInfo.add(Y, constraints);
 
-        Find = new JButton("Вычислить");
+        // button.calculate
+        Find = new JButton(Application.getString("button.calculate"));
         constraints.gridx = 1;
         constraints.gridy = 2;
         constraints.gridwidth = 1;
@@ -347,8 +363,10 @@ public class PhysLabGUI {
         constraints.ipadx = 0;
         constraints.ipady = 0;
         info.setEditable(false);
-        info.setText("Напряженность: " + panel.calculateE(Double.parseDouble(X.getText()), Double.parseDouble(Y.getText())) + "\n" +
-                "Потенциал: " + panel.calculatePhi(Double.parseDouble(X.getText()), Double.parseDouble(Y.getText())));
+
+        // text.voltage, text.potential
+        info.setText(Application.getString("text.voltage") + panel.calculateE(Double.parseDouble(X.getText()), Double.parseDouble(Y.getText())) + "\n" +
+                Application.getString("text.potential") + panel.calculatePhi(Double.parseDouble(X.getText()), Double.parseDouble(Y.getText())));
         electInfo.add(info, constraints);
 
         panel.info = info;
@@ -364,18 +382,21 @@ public class PhysLabGUI {
 
         Find.addActionListener(e -> {
             try {
-                info.setText("Напряженность: " + panel.calculateE(Double.parseDouble(X.getText()), Double.parseDouble(Y.getText())) + "\n" +
-                        "Потенциал: " + panel.calculatePhi(Double.parseDouble(X.getText()), Double.parseDouble(Y.getText())));
+                // text.voltage, text.potential
+                info.setText(Application.getString("text.voltage") + panel.calculateE(Double.parseDouble(X.getText()), Double.parseDouble(Y.getText())) + "\n" +
+                        Application.getString("text.potential") + panel.calculatePhi(Double.parseDouble(X.getText()), Double.parseDouble(Y.getText())));
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(pane, "Ошибка! Неправильный формат данных!");
+                // message.error_wrong_format
+                JOptionPane.showMessageDialog(pane, Application.getString("message.error_wrong_format"));
             }
         });
 
         JPanel graphControl = new JPanel();
-        border = new TitledBorder("Графики");
+        border = new TitledBorder(Application.getString("border.graphs"));
         graphControl.setBorder(border);
 
-        JButton phiX = new JButton("Потенциал");
+        // button.potential
+        JButton phiX = new JButton(Application.getString("button.potential"));
         constraints.gridx = 0;
         constraints.gridy = 0;
         constraints.gridwidth = 1;
@@ -386,7 +407,8 @@ public class PhysLabGUI {
         constraints.ipady = 0;
         graphControl.add(phiX, constraints);
 
-        JButton Ex = new JButton("Напряженность");
+        // button.voltage
+        JButton Ex = new JButton(Application.getString("button.voltage"));
         constraints.gridx = 0;
         constraints.gridy = 1;
         constraints.gridwidth = 1;
@@ -397,7 +419,8 @@ public class PhysLabGUI {
         constraints.ipady = 0;
         graphControl.add(Ex, constraints);
 
-        graph1 = new JFrame("График зависимости потенциала от X");
+        // frame.graph_potential_x
+        graph1 = new JFrame(Application.getString("frame.graph_potential_x"));
         int size = 700;
         ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource("icons/icon.png"));
         graph1.setIconImage(icon.getImage());
@@ -406,7 +429,8 @@ public class PhysLabGUI {
         PotentialGraphPanel potentialGraphPanel = new PotentialGraphPanel(panel);
         graph1.add(potentialGraphPanel, BorderLayout.CENTER);
 
-        save = new JButton("Сохранить");
+        // button.save
+        save = new JButton(Application.getString("button.save"));
 
         save.addActionListener(e -> {
             BufferedImage img = new BufferedImage(potentialGraphPanel.getWidth(), potentialGraphPanel.getHeight(), BufferedImage.TYPE_INT_RGB);
@@ -415,13 +439,15 @@ public class PhysLabGUI {
             g2d.dispose();
 
             JFileChooser fileChooser = new JFileChooser();
-            fileChooser.setDialogTitle("Сохранить график");
+            // dialog_title.save_graph
+            fileChooser.setDialogTitle(Application.getString("dialog_title.save_graph"));
             int userSelect = fileChooser.showSaveDialog(graph1);
             if (userSelect == JFileChooser.APPROVE_OPTION) {
                 try {
                     ImageIO.write(img, "png", fileChooser.getSelectedFile());
                 } catch (IOException ioException) {
-                    System.err.println("Error while saving file!");
+                    // message.error_save
+                    System.err.println(Application.getString("message.error_save"));
                 }
             }
         });
@@ -434,14 +460,16 @@ public class PhysLabGUI {
             graph1.setSize(new Dimension(size, size));
         });
 
-        graph2 = new JFrame("График зависимости напряженности от X");
+        // frame.graph_voltage_x
+        graph2 = new JFrame(Application.getString("frame.graph_voltage_x"));
         graph2.setLayout(new BorderLayout());
         graph2.setPreferredSize(new Dimension(size, size));
         graph2.setIconImage(icon.getImage());
         TensionGraphPanel tensionGraphPanel = new TensionGraphPanel(panel);
         graph2.add(tensionGraphPanel, BorderLayout.CENTER);
 
-        save = new JButton("Сохранить");
+        // button.save
+        save = new JButton(Application.getString("button.save"));
 
         save.addActionListener(e -> {
             BufferedImage img = new BufferedImage(tensionGraphPanel.getWidth(), tensionGraphPanel.getHeight(), BufferedImage.TYPE_INT_RGB);
@@ -450,13 +478,15 @@ public class PhysLabGUI {
             g2d.dispose();
 
             JFileChooser fileChooser = new JFileChooser();
-            fileChooser.setDialogTitle("Сохранить график");
+            // dialog_title.save_graph
+            fileChooser.setDialogTitle(Application.getString("dialog_title.save_graph"));
             int userSelect = fileChooser.showSaveDialog(graph2);
             if (userSelect == JFileChooser.APPROVE_OPTION) {
                 try {
                     ImageIO.write(img, "png", fileChooser.getSelectedFile());
                 } catch (IOException ioException) {
-                    System.err.println("Error while saving file!");
+                    // message.error_save
+                    System.err.println(Application.getString("message.error_save"));
                 }
             }
         });
@@ -489,7 +519,8 @@ public class PhysLabGUI {
     }
 
     private static void createAndShowGUI() {
-        JFrame frame = new JFrame("PhysLabElectricityV1. Mikhail Ushakov M3102.");
+        // title
+        JFrame frame = new JFrame(Application.getUSString("title"));
         frame.setMinimumSize(new Dimension(WIDTH, HEIGHT));
 
         ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource("icons/icon.png"));
@@ -499,7 +530,8 @@ public class PhysLabGUI {
         try {
             UIManager.setLookAndFeel(new FlatIntelliJLaf());
         } catch (Exception e) {
-            System.err.println("Error while installing LaF");
+            // message.error_laf
+            System.err.println(Application.getString("message.error_laf"));
         }
 
 

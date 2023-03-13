@@ -68,6 +68,7 @@ public class ElectricityPanel extends GraphPanel {
                         infoY = (int) getPY(e.getY());
                         X.setText(String.valueOf(infoX));
                         Y.setText(String.valueOf(infoY));
+                        // voltage_title, potential_title
                         info.setText("Напряженность: " + format(calculateE(Double.parseDouble(X.getText()), Double.parseDouble(Y.getText())), 6) + " В/м\n" +
                                 "Потенциал: " + format(calculatePhi(Double.parseDouble(X.getText()), Double.parseDouble(Y.getText())), 6) + " В");
                         if (showInfo) {
@@ -339,6 +340,7 @@ public class ElectricityPanel extends GraphPanel {
             g2d.setColor(Color.RED);
             g2d.drawLine((int) getScrX(infoX) - crossLen, (int) getScrY(infoY) - crossLen, (int) getScrX(infoX) + crossLen, (int) getScrY(infoY) + crossLen);
             g2d.drawLine((int) getScrX(infoX) + crossLen, (int) getScrY(infoY) - crossLen, (int) getScrX(infoX) - crossLen, (int) getScrY(infoY) + crossLen);
+            // voltage_title, potential_title
             String builder = "Напряжённость: " + format(calculateE(infoX, infoY), 6) +
                     "\nПотенциал: " + format(calculatePhi(infoX, infoY), 6);
             drawText(g2d, builder, (int) getScrX(infoX), (int) getScrY(infoY));
