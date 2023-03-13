@@ -43,7 +43,33 @@ g2d.drawLine((int) getScrX(xi0), (int) getScrY(yi0), (int) getScrX(xi0 + dx), (i
 
 ## How to use the project
 
+On the left side of the application window, there is a big simulation area where are charged particles located and where the lines of force are displayed.
+In this simulation area user can drag particles with a mouse and the lines of force will be dynamically re-render.
+
+And, on the left side there are three panels that are used to control the simulation:
+- The particles panel
+  This panel is used to set the coordinates of the particles (cm), set the charges values of particles (nc) and set the number of the lines of force.
+  Also user can reset the particles by pressing the "Reset" button.
+
+- The information panel
+  Here user can see the value of the voltage and potential value at some point in the electric field. In order to get all this information for the particular point, the user can click the right mouse button in the desired location of the electric field. 
+  
+- The graphs panel
+  Using the controls of this panel users can access the graphs of dependence between voltage and the coordinate x, and the graph of the dependence between potential and the coordinate x.
+
 ![Screenshot](/images/screen.png)
+
+## Examples
+
+|Particle 1       | Particle 2            | Lines of force                                        |
+|-----------------|-----------------------|-------------------------------------------------------|
+|X=-10, Y=0, Q=-10| X=10, Y=0, Q=10       | <img src="/images/demo_1.png" alt="Demo 1" width=200> |
+|-----------------|-----------------------|-------------------------------------------------------|
+|X=-10, Y=0, Q=10 | X=10, Y=0, Q=10       | <img src="/images/demo_2.png" alt="Demo 2" width=200> |
+|-----------------|-----------------------|-------------------------------------------------------|
+|X=-10, Y=0, Q=10 | X=10, Y=0, Q=-20      | <img src="/images/demo_3.png" alt="Demo 3" width=200> |
+|-----------------|-----------------------|-------------------------------------------------------|
+|X=0, Y=0, Q=10   | X=10, Y=0, Q=0        | <img src="/images/demo_4.png" alt="Demo 4" width=200> |
 
 ## Contributing
 
