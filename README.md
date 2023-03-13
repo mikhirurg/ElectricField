@@ -43,6 +43,8 @@ g2d.drawLine((int) getScrX(xi0), (int) getScrY(yi0), (int) getScrX(xi0 + dx), (i
 
 ## How to use the project
 
+<img src="/images/screen.png" alt="Demo 1" width=800>
+
 On the left side of the application window, there is a big simulation area where are charged particles located and where the lines of force are displayed.
 In this simulation area user can drag particles with a mouse and the lines of force will be dynamically re-render.
 
@@ -56,8 +58,6 @@ And, on the left side there are three panels that are used to control the simula
   
 - The graphs panel
   Using the controls of this panel users can access the graphs of dependence between voltage and the coordinate x, and the graph of the dependence between potential and the coordinate x.
-
-<img src="/images/screen.png" alt="Demo 1" width=800>
 
 ## Examples
 
