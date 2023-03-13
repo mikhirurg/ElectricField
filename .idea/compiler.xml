@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="ElectricityField" />
+        <module name="ElectricField" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="ElectricityField" target="13" />
+      <module name="ElectricField" target="13" />
     </bytecodeTargetLevel>
   </component>
 </project>
