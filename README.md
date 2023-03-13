@@ -57,19 +57,16 @@ And, on the left side there are three panels that are used to control the simula
 - The graphs panel
   Using the controls of this panel users can access the graphs of dependence between voltage and the coordinate x, and the graph of the dependence between potential and the coordinate x.
 
-![Screenshot](/images/screen.png)
+<img src="/images/screen.png" alt="Demo 1" width=800>
 
 ## Examples
 
 |Particle 1       | Particle 2            | Lines of force                                        |
 |-----------------|-----------------------|-------------------------------------------------------|
-|X=-10, Y=0, Q=-10| X=10, Y=0, Q=10       | <img src="/images/demo_1.png" alt="Demo 1" width=200> |
-|-----------------|-----------------------|-------------------------------------------------------|
-|X=-10, Y=0, Q=10 | X=10, Y=0, Q=10       | <img src="/images/demo_2.png" alt="Demo 2" width=200> |
-|-----------------|-----------------------|-------------------------------------------------------|
-|X=-10, Y=0, Q=10 | X=10, Y=0, Q=-20      | <img src="/images/demo_3.png" alt="Demo 3" width=200> |
-|-----------------|-----------------------|-------------------------------------------------------|
-|X=0, Y=0, Q=10   | X=10, Y=0, Q=0        | <img src="/images/demo_4.png" alt="Demo 4" width=200> |
+|X=-10, Y=0, Q=-10| X=10, Y=0, Q=10       | <img src="/images/demo_1.png" alt="Demo 1" width=400> |
+|X=-10, Y=0, Q=10 | X=10, Y=0, Q=10       | <img src="/images/demo_2.png" alt="Demo 2" width=400> |
+|X=-10, Y=0, Q=10 | X=10, Y=0, Q=-20      | <img src="/images/demo_3.png" alt="Demo 3" width=400> |
+|X=0, Y=0, Q=10   | X=10, Y=0, Q=0        | <img src="/images/demo_4.png" alt="Demo 4" width=400> |
 
 ## Contributing
 
