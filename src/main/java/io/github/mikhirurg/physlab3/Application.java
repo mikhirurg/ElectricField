@@ -9,6 +9,12 @@ public class Application {
     private static final ResourceBundle resourceBundle;
     private static final ResourceBundle resourceBundleUS;
 
+    public enum Os {
+        WIN, MAC, LINUX, OTHER
+    }
+
+    private static Os currentOs;
+
     static {
         ResourceBundle resourceBundleTmp;
         try {
@@ -28,4 +34,19 @@ public class Application {
         return resourceBundleUS.getString(key);
     }
 
+    public static Os getOS() {
+        if (currentOs == null) {
+            String osStr = System.getProperty("os.name", "generic").toLowerCase(Locale.ENGLISH);
+            if ((osStr.contains("mac")) || (osStr.contains("darwin"))) {
+                currentOs = Os.MAC;
+            } else if (osStr.contains("win")) {
+                currentOs = Os.WIN;
+            } else if (osStr.contains("nux")) {
+                currentOs = Os.LINUX;
+            } else {
+                currentOs = Os.OTHER;
+            }
+        }
+        return currentOs;
+    }
 }

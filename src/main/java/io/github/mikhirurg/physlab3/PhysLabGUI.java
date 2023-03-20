@@ -50,15 +50,10 @@ public class PhysLabGUI {
 
         constraints.fill = GridBagConstraints.BOTH;
 
-
         JPanel fieldControl = new JPanel(new GridBagLayout());
-
-        // border.charges_settings
         TitledBorder border = new TitledBorder(Application.getString("border.charges_settings"));
-
         fieldControl.setBorder(border);
 
-        // label.charges_q1_q2
         JLabel label = new JLabel(Application.getString("label.charges_q1_q2"));
         constraints.gridx = 0;
         constraints.gridy = 0;
@@ -90,7 +85,6 @@ public class PhysLabGUI {
         constraints.weighty = 0;
         fieldControl.add(Q2, constraints);
 
-        // label.coords_x1_x2
         label = new JLabel(Application.getString("label.coords_x1_x2"));
         constraints.gridx = 0;
         constraints.gridy = 2;
@@ -122,7 +116,6 @@ public class PhysLabGUI {
         constraints.weighty = 0;
         fieldControl.add(X2, constraints);
 
-        // label.coords_y1_y2
         label = new JLabel(Application.getString("label.coords_y1_y2"));
         constraints.gridx = 0;
         constraints.gridy = 4;
@@ -154,7 +147,6 @@ public class PhysLabGUI {
         constraints.weighty = 0;
         fieldControl.add(Y2, constraints);
 
-        // label.number_force_lines
         label = new JLabel(Application.getString("label.number_force_lines"));
         constraints.gridx = 0;
         constraints.gridy = 6;
@@ -177,7 +169,6 @@ public class PhysLabGUI {
         constraints.ipady = 0;
         fieldControl.add(nLines, constraints);
 
-        // button.set
         Set = new JButton(Application.getString("button.set"));
         constraints.fill = GridBagConstraints.SOUTHWEST;
         constraints.anchor = GridBagConstraints.SOUTH;
@@ -186,7 +177,6 @@ public class PhysLabGUI {
         constraints.gridheight = 1;
         fieldControl.add(Set, constraints);
 
-        // button.reset
         Reset = new JButton(Application.getString("button.reset"));
         constraints.fill = GridBagConstraints.SOUTHWEST;
         constraints.anchor = GridBagConstraints.SOUTH;
@@ -222,7 +212,6 @@ public class PhysLabGUI {
                 Y1.setText(String.valueOf(panel.e1.y));
                 Y2.setText(String.valueOf(panel.e2.y));
                 nLines.setText(String.valueOf(panel.nlines));
-                // message.error_wrong_format
                 JOptionPane.showMessageDialog(pane, Application.getString("message.error_wrong_format"));
             }
         });
@@ -247,7 +236,6 @@ public class PhysLabGUI {
             panel.repaint();
         });
 
-        // button.save
         JButton save = new JButton(Application.getString("button.save"));
 
         save.addActionListener(e -> {
@@ -257,14 +245,12 @@ public class PhysLabGUI {
             g2d.dispose();
 
             JFileChooser fileChooser = new JFileChooser();
-            // dialog_title.save_graph_title
-            fileChooser.setDialogTitle(Application.getString("dialog_title.save_graph_title"));
+            fileChooser.setDialogTitle(Application.getString("dialog_title.save_graph"));
             int userSelect = fileChooser.showSaveDialog(panel);
             if (userSelect == JFileChooser.APPROVE_OPTION) {
                 try {
                     ImageIO.write(img, "png", fileChooser.getSelectedFile());
                 } catch (IOException ioException) {
-                    // message.error_save
                     System.err.println(Application.getString("message.error_save"));
                 }
             }
@@ -289,11 +275,9 @@ public class PhysLabGUI {
 
         JPanel electInfo = new JPanel(new GridBagLayout());
 
-        // border.information
         border = new TitledBorder(Application.getString("border.information"));
         electInfo.setBorder(border);
 
-        // label.coords_x_y
         label = new JLabel(Application.getString("label.coords_x_y"));
         constraints.gridx = 0;
         constraints.gridy = 0;
@@ -327,7 +311,6 @@ public class PhysLabGUI {
         constraints.ipady = 0;
         electInfo.add(Y, constraints);
 
-        // button.calculate
         Find = new JButton(Application.getString("button.calculate"));
         constraints.gridx = 1;
         constraints.gridy = 2;
@@ -364,7 +347,6 @@ public class PhysLabGUI {
         constraints.ipady = 0;
         info.setEditable(false);
 
-        // text.voltage, text.potential
         info.setText(Application.getString("text.voltage") + panel.calculateE(Double.parseDouble(X.getText()), Double.parseDouble(Y.getText())) + "\n" +
                 Application.getString("text.potential") + panel.calculatePhi(Double.parseDouble(X.getText()), Double.parseDouble(Y.getText())));
         electInfo.add(info, constraints);
@@ -382,11 +364,9 @@ public class PhysLabGUI {
 
         Find.addActionListener(e -> {
             try {
-                // text.voltage, text.potential
                 info.setText(Application.getString("text.voltage") + panel.calculateE(Double.parseDouble(X.getText()), Double.parseDouble(Y.getText())) + "\n" +
                         Application.getString("text.potential") + panel.calculatePhi(Double.parseDouble(X.getText()), Double.parseDouble(Y.getText())));
             } catch (NumberFormatException ex) {
-                // message.error_wrong_format
                 JOptionPane.showMessageDialog(pane, Application.getString("message.error_wrong_format"));
             }
         });
@@ -395,7 +375,6 @@ public class PhysLabGUI {
         border = new TitledBorder(Application.getString("border.graphs"));
         graphControl.setBorder(border);
 
-        // button.potential
         JButton phiX = new JButton(Application.getString("button.potential"));
         constraints.gridx = 0;
         constraints.gridy = 0;
@@ -407,7 +386,6 @@ public class PhysLabGUI {
         constraints.ipady = 0;
         graphControl.add(phiX, constraints);
 
-        // button.voltage
         JButton Ex = new JButton(Application.getString("button.voltage"));
         constraints.gridx = 0;
         constraints.gridy = 1;
@@ -419,7 +397,6 @@ public class PhysLabGUI {
         constraints.ipady = 0;
         graphControl.add(Ex, constraints);
 
-        // frame.graph_potential_x
         graph1 = new JFrame(Application.getString("frame.graph_potential_x"));
         int size = 700;
         ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource("icons/icon.png"));
@@ -429,7 +406,6 @@ public class PhysLabGUI {
         PotentialGraphPanel potentialGraphPanel = new PotentialGraphPanel(panel);
         graph1.add(potentialGraphPanel, BorderLayout.CENTER);
 
-        // button.save
         save = new JButton(Application.getString("button.save"));
 
         save.addActionListener(e -> {
@@ -439,14 +415,12 @@ public class PhysLabGUI {
             g2d.dispose();
 
             JFileChooser fileChooser = new JFileChooser();
-            // dialog_title.save_graph
             fileChooser.setDialogTitle(Application.getString("dialog_title.save_graph"));
             int userSelect = fileChooser.showSaveDialog(graph1);
             if (userSelect == JFileChooser.APPROVE_OPTION) {
                 try {
                     ImageIO.write(img, "png", fileChooser.getSelectedFile());
                 } catch (IOException ioException) {
-                    // message.error_save
                     System.err.println(Application.getString("message.error_save"));
                 }
             }
@@ -460,7 +434,6 @@ public class PhysLabGUI {
             graph1.setSize(new Dimension(size, size));
         });
 
-        // frame.graph_voltage_x
         graph2 = new JFrame(Application.getString("frame.graph_voltage_x"));
         graph2.setLayout(new BorderLayout());
         graph2.setPreferredSize(new Dimension(size, size));
@@ -468,9 +441,7 @@ public class PhysLabGUI {
         TensionGraphPanel tensionGraphPanel = new TensionGraphPanel(panel);
         graph2.add(tensionGraphPanel, BorderLayout.CENTER);
 
-        // button.save
         save = new JButton(Application.getString("button.save"));
-
         save.addActionListener(e -> {
             BufferedImage img = new BufferedImage(tensionGraphPanel.getWidth(), tensionGraphPanel.getHeight(), BufferedImage.TYPE_INT_RGB);
             Graphics2D g2d = (Graphics2D) img.getGraphics();
@@ -478,7 +449,6 @@ public class PhysLabGUI {
             g2d.dispose();
 
             JFileChooser fileChooser = new JFileChooser();
-            // dialog_title.save_graph
             fileChooser.setDialogTitle(Application.getString("dialog_title.save_graph"));
             int userSelect = fileChooser.showSaveDialog(graph2);
             if (userSelect == JFileChooser.APPROVE_OPTION) {
@@ -519,21 +489,17 @@ public class PhysLabGUI {
     }
 
     private static void createAndShowGUI() {
-        // title
         JFrame frame = new JFrame(Application.getUSString("title"));
         frame.setMinimumSize(new Dimension(WIDTH, HEIGHT));
 
         ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource("icons/icon.png"));
-
         frame.setIconImage(icon.getImage());
 
         try {
             UIManager.setLookAndFeel(new FlatIntelliJLaf());
         } catch (Exception e) {
-            // message.error_laf
             System.err.println(Application.getString("message.error_laf"));
         }
-
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         addComponentsToPane(frame.getContentPane());
